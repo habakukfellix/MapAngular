@@ -1,0 +1,54 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps apps Fellix</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+  <script ansyc defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCov8xDj6s3nvfzTiNOLZJcSGOk1kRQSN0"></script>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="map.js"></script>
+
+</head>
+  <body ng-app="app" ng-controller="appCtrl">
+
+<h3>Google Maps</h3>
+
+    <!-- search/go to current location -->
+    <div class="text-right">
+        <div class="input-append text-right">
+            <input type="text" ng-model="search"/>
+            <button class="btn" type="button" ng-click="geoCode()" ng-disabled="search.length == 0" title="search" >
+              &nbsp;<i class="icon-search"></i>Search
+            </button>
+            <button class="btn" type="button" ng-click="gotoCurrentLocation()" title="current location">
+              &nbsp;<i class="icon-home"></i>Get Current Location
+            </button>
+        </div>
+    </div>
+
+    <!-- map -->
+    <app-map style="height:400px;margin:12px;box-shadow:0 3px 25px black;"
+        center="loc"
+        markers="airports"
+        searchQuery="search"
+    > 
+    </app-map>
+
+    <!-- current location -->
+    <div class="text-info text-right">
+        {{loc.lat | lat:0}}, {{loc.lon | lon:0}}
+    </div>
+
+    <!-- list of airports -->
+    <div class="container-fluid">
+        
+    </div>
+</body>
+</html>
+
